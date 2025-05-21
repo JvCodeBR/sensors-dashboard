@@ -1,0 +1,60 @@
+<% layout('layout', { title: 'Dashboard' }) %>
+
+<h1 class="mb-4">Dashboard</h1>
+
+<!-- Resumo -->
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card text-white bg-primary">
+      <div class="card-body">
+        <h5 class="card-title">Sensores</h5>
+        <p class="card-text fs-4"><%= totalSensors %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-success">
+      <div class="card-body">
+        <h5 class="card-title">Detecções</h5>
+        <p class="card-text fs-4"><%= totalDetections %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-dark">
+      <div class="card-body">
+        <h5 class="card-title">Última Detecção</h5>
+        <p class="card-text"><%= new Date(lastDetectionDate).toLocaleString() %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lista de sensores -->
+<h3 class="mb-3">Atividade</h3>
+<% if (sensors && sensors.length > 0) { %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Detecções</th>
+        <th>Última Detecção</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% sensors.forEach(sensor => { %>
+        <tr>
+          <td><%= sensor.name %></td>
+          <td><%= sensor.totalDetections ?? 0 %></td>
+          <td><%= sensor.lastPresence ? new Date(sensor.lastPresence.registeredAt).toLocaleString() : 'Nenhuma atividade' %></td>
+          <td>
+            <a href="/sensors/detail/<%= sensor._id %>" class="btn btn-sm btn-primary">Ver</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <div class="alert alert-info">Nenhum sensor cadastrado ainda.</div>
+<% } %>

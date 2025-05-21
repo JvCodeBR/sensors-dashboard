@@ -1,0 +1,24 @@
+<% layout('layout', { title: 'Meus Sensores' }) %>
+
+<h2>Meus Sensores</h2>
+
+<% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+<% if (sensors && sensors.length > 0) { %>
+  <div class="list-group">
+    <% sensors.forEach(function(sensor) { %>
+      <a href="/sensors/detail/<%= sensor._id %>">
+        <div class="list-group-item">
+          <h5 class="mb-1"><%= sensor.name %></h5>
+          <small>Registro: <%= sensor.registeredAt?.toLocaleString() %></small>
+        </div>
+      </a>
+    <% }); %>
+  </div>
+<% } else { %>
+  <p>Nenhum sensor encontrado.</p>
+<% } %>
+
+<a href="/sensors/register" class="btn btn-primary mt-3">Adicionar sensor</a>

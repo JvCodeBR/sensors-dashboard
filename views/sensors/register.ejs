@@ -1,0 +1,16 @@
+<% layout('layout', { title: 'Cadastrar Sensor' }) %>
+
+<h2>Cadastrar Sensor</h2>
+
+<% if (error) { %>
+  <div class="alert alert-danger"><%= error %></div>
+<% } %>
+
+<form method="POST" action="/sensors/register">
+  <div class="mb-3">
+    <input name="name" class="form-control" placeholder="Nome do Sensor" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar Sensor</button>
+</form>
+
+<p class="mt-3"><a href="/sensors">Voltar para Meus Sensores</a></p>
