@@ -141,8 +141,6 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
     },
   ]);
 
-  console.log(userSensors);
-
   const sensorIds = userSensors.map((s) => s._id);
 
   const totalSensors = sensorIds.length;
@@ -226,5 +224,5 @@ app.post("/webhook/detect", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at port ${port}`);
 });

@@ -9,12 +9,10 @@
 <% if (sensors && sensors.length > 0) { %>
   <div class="list-group">
     <% sensors.forEach(function(sensor) { %>
-      <a href="/sensors/detail/<%= sensor._id %>">
-        <div class="list-group-item">
-          <h5 class="mb-1"><%= sensor.name %></h5>
-          <small>Registro: <%= sensor.registeredAt?.toLocaleString() %></small>
-        </div>
-      </a>
+      <div class="list-group-item" onclick="window.location.href = '/sensors/detail/<%= sensor._id %>'">
+        <h5 class="mb-1"><%= sensor.name %></h5>
+        <small>Registro: <%= sensor.registeredAt?.toLocaleString() %></small>
+      </div>
     <% }); %>
   </div>
 <% } else { %>

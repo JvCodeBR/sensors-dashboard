@@ -4,7 +4,7 @@
 
 <!-- Resumo -->
 <div class="row mb-4">
-  <div class="col-md-4">
+  <div class="col-md-4 pointer" onclick="window.location.href = '/sensors'">
     <div class="card text-white bg-primary">
       <div class="card-body">
         <h5 class="card-title">Sensores</h5>
@@ -24,7 +24,7 @@
     <div class="card text-white bg-dark">
       <div class="card-body">
         <h5 class="card-title">Última Detecção</h5>
-        <p class="card-text"><%= new Date(lastDetectionDate).toLocaleString() %></p>
+        <p class="card-text"><%= lastDetectionDate ? lastDetectionDate.toLocaleString() : 'Nenhuma atividade' %></p>
       </div>
     </div>
   </div>
